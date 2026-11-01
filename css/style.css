@@ -707,6 +707,14 @@ body.has-cursor .cursor-glow { opacity: 1; }
 .project__btn--del { color: #fca5a5; border-color: rgba(252, 165, 165, 0.4); }
 .project__btn--del:hover { background: rgba(239, 68, 68, 0.18); }
 
+.project__linkbox { margin-top: 22px; display: grid; gap: 10px; justify-items: start; }
+.project__linkurl {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--dim);
+  word-break: break-all;
+}
+
 .project__badge {
   position: absolute;
   top: 20px; right: -34px;
@@ -720,15 +728,6 @@ body.has-cursor .cursor-glow { opacity: 1; }
   background: linear-gradient(90deg, var(--purple), var(--pink));
   box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6);
 }
-
-.projects__toolbar {
-  margin-top: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 20px;
-}
-.projects__hint { font-size: 0.85rem; color: var(--dim); max-width: 560px; }
 
 /* ---------- Контакты ---------- */
 .section--contact { padding-bottom: 120px; }
@@ -929,7 +928,6 @@ body.has-cursor .cursor-glow { opacity: 1; }
 @media (max-width: 480px) {
   .btn { width: 100%; }
   .hero__actions { flex-direction: column; }
-  .projects__toolbar .btn { width: 100%; }
 }
 
 /* ---------- Доступность ---------- */

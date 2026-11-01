@@ -338,7 +338,7 @@ function initCursorGlow() {
 }
 
 /* =========================================================
-   6. ПРОЕКТЫ: рендер, локальные проекты, форма
+   6. ПРОЕКТЫ: рендер, локальные проекты, модалка «Подробнее»
    ========================================================= */
 const STORAGE_KEY = 'ab_portfolio_projects_v1';
 
@@ -431,7 +431,6 @@ function initProjects() {
   renderProjects();
 
   const projectModal = $('#projectModal');
-  const formModal = $('#formModal');
   const modalContent = $('#modalContent');
 
   // клики внутри сетки проектов
@@ -448,7 +447,11 @@ function initProjects() {
         <span class="project__status ${statusClass(p.status)}">${escapeHtml(p.status || '')}</span>
         <p style="margin-top:16px">${escapeHtml(p.details || p.description || '')}</p>
         ${tech ? `<ul class="project__tech">${tech}</ul>` : ''}
-        ${p.link ? `<a class="btn btn--primary" style="margin-top:10px" href="${escapeHtml(p.link)}" target="_blank" rel="noopener"><span>Открыть проект ↗</span></a>` : ''}
+        ${p.link ? `
+          <div class="project__linkbox">
+            <a class="btn btn--primary" href="${escapeHtml(p.link)}" target="_blank" rel="noopener"><span>Открыть проект ↗</span></a>
+            <p class="project__linkurl">${escapeHtml(p.link)}</p>
+          </div>` : ''}
       `;
       openModal(projectModal);
     }
@@ -462,10 +465,7 @@ function initProjects() {
     }
   });
 
-  // открытие формы
-  $('#openProjectForm').addEventListener('click', () => openModal(formModal));
-
-  // закрытие модалок
+  // закрытие модалки
   $$('.modal').forEach((modal) => {
     modal.addEventListener('click', (e) => {
       if (e.target.hasAttribute('data-close')) closeModal(modal);
@@ -473,52 +473,6 @@ function initProjects() {
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') $$('.modal.is-open').forEach(closeModal);
-  });
-
-  // отправка формы
-  $('#projectForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const fd = new FormData(e.target);
-    const techArr = String(fd.get('tech') || '')
-      .split(',').map((s) => s.trim()).filter(Boolean);
-
-    const project = {
-      id: 'custom-' + Date.now(),
-      title: String(fd.get('title') || '').trim(),
-      description: String(fd.get('description') || '').trim(),
-      details: String(fd.get('description') || '').trim(),
-      status: String(fd.get('status') || 'В разработке'),
-      icon: String(fd.get('icon') || '').trim() || '📁',
-      tech: techArr,
-      link: String(fd.get('link') || '').trim(),
-      featured: false,
-      custom: true
-    };
-
-    if (!project.title || !project.description) return;
-
-    const list = getCustomProjects();
-    list.push(project);
-    saveCustomProjects(list);
-    renderProjects();
-
-    e.target.reset();
-    closeModal(formModal);
-
-    // прокрутка к новой карточке + подсветка
-    setTimeout(() => {
-      const card = $(`[data-project="${project.id}"]`);
-      if (card) {
-        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        card.animate(
-          [
-            { boxShadow: '0 0 0 0 rgba(168,85,247,0.9)' },
-            { boxShadow: '0 0 0 14px rgba(168,85,247,0)' }
-          ],
-          { duration: 1400, easing: 'ease-out' }
-        );
-      }
-    }, 120);
   });
 }
 

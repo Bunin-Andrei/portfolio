@@ -224,16 +224,6 @@
     </div>
 
     <div class="projects" id="projectsGrid"><!-- карточки рендерятся из js/projects.js --></div>
-
-    <div class="projects__toolbar reveal" data-reveal>
-      <button class="btn btn--primary" id="openProjectForm">
-        <span>＋ Добавить проект</span>
-      </button>
-      <p class="projects__hint">
-        Добавленные через форму проекты сохраняются в браузере.
-        Чтобы закрепить проект навсегда — отредактируй <code>js/projects.js</code>.
-      </p>
-    </div>
   </section>
 
   <!-- ===== Контакты ===== -->
@@ -279,61 +269,6 @@
   <div class="modal__window" role="dialog" aria-modal="true">
     <button class="modal__close" data-close aria-label="Закрыть">✕</button>
     <div class="modal__content" id="modalContent"></div>
-  </div>
-</div>
-
-<!-- ===== Модалка: форма добавления проекта ===== -->
-<div class="modal" id="formModal" aria-hidden="true">
-  <div class="modal__backdrop" data-close></div>
-  <div class="modal__window" role="dialog" aria-modal="true">
-    <button class="modal__close" data-close aria-label="Закрыть">✕</button>
-    <div class="modal__content">
-      <h3 class="modal__title">Новый проект</h3>
-      <p class="modal__sub">Заполни карточку — она появится в разделе «Мои работы».</p>
-
-      <form id="projectForm" class="form" autocomplete="off">
-        <label class="form__field">
-          <span>Название проекта *</span>
-          <input type="text" name="title" required maxlength="60" placeholder="Например: Бот для расписания">
-        </label>
-
-        <label class="form__field">
-          <span>Короткое описание *</span>
-          <textarea name="description" required maxlength="220" rows="3" placeholder="Что делает проект и чем полезен"></textarea>
-        </label>
-
-        <div class="form__row">
-          <label class="form__field">
-            <span>Статус</span>
-            <select name="status">
-              <option value="В разработке">В разработке</option>
-              <option value="Готов">Готов</option>
-              <option value="Идея">Идея</option>
-            </select>
-          </label>
-
-          <label class="form__field">
-            <span>Иконка (эмодзи)</span>
-            <input type="text" name="icon" maxlength="4" placeholder="🤖">
-          </label>
-        </div>
-
-        <label class="form__field">
-          <span>Технологии (через запятую)</span>
-          <input type="text" name="tech" placeholder="Python, JavaScript, SQLite">
-        </label>
-
-        <label class="form__field">
-          <span>Ссылка на проект (необязательно)</span>
-          <input type="url" name="link" placeholder="https://github.com/...">
-        </label>
-
-        <div class="form__actions">
-          <button type="submit" class="btn btn--primary"><span>Сохранить</span></button>
-          <button type="reset" class="btn btn--ghost"><span>Очистить</span></button>
-        </div>
-      </form>
-    </div>
   </div>
 </div>
 
