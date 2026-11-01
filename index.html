@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Портфолио Андрея Бунина — студента 1 курса колледжа СКОиПТ. Проекты, навыки и веб-приложение «Планировщик учебного дня».">
+<meta name="theme-color" content="#0a0510">
+<title>Андрей Бунин — Портфолио</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
+</head>
+<body>
+
+<!-- ===== Фоновые слои ===== -->
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="bg-glow bg-glow--1" aria-hidden="true"></div>
+<div class="bg-glow bg-glow--2" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<!-- ===== Навигация ===== -->
+<header class="nav" id="nav">
+  <a href="#hero" class="nav__logo">
+    <span class="nav__logo-mark">АБ</span>
+    <span class="nav__logo-text">Бунин Андрей</span>
+  </a>
+
+  <nav class="nav__links" id="navLinks">
+    <a href="#about">Обо мне</a>
+    <a href="#skills">Навыки</a>
+    <a href="#projects">Проекты</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+
+  <button class="nav__burger" id="navBurger" aria-label="Меню" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<main>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__scene" aria-hidden="true">
+      <div class="cube">
+        <div class="cube__face cube__face--front"><span>&lt;/&gt;</span></div>
+        <div class="cube__face cube__face--back"><span>WEB</span></div>
+        <div class="cube__face cube__face--right"><span>{ }</span></div>
+        <div class="cube__face cube__face--left"><span>py</span></div>
+        <div class="cube__face cube__face--top"><span>3D</span></div>
+        <div class="cube__face cube__face--bottom"><span>#</span></div>
+      </div>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow reveal" data-reveal>
+        <span class="dot"></span> Студент 1 курса · Колледж СКОиПТ
+      </p>
+
+      <h1 class="hero__title reveal" data-reveal>
+        Привет, я <span class="grad">Андрей Бунин</span>
+      </h1>
+
+      <p class="hero__subtitle reveal" data-reveal>
+        Учусь программированию, делаю ботов и веб-приложения и собираю собственное портфолио.
+        Сейчас разрабатываю веб-приложение <strong>«Планировщик учебного дня»</strong> — помощника,
+        который собирает расписание, дедлайны и задачи в одном месте.
+      </p>
+
+      <div class="hero__actions reveal" data-reveal>
+        <a href="#projects" class="btn btn--primary">
+          <span>Смотреть проекты</span>
+        </a>
+        <a href="#contact" class="btn btn--ghost">
+          <span>Связаться со мной</span>
+        </a>
+      </div>
+
+      <ul class="hero__stats reveal" data-reveal>
+        <li><b data-count="1">0</b><span>курс обучения</span></li>
+        <li><b data-count="3">0</b><span>языка программирования</span></li>
+        <li><b data-count="1">0</b><span>проект в разработке</span></li>
+      </ul>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span class="mouse"></span>
+      <span>листай вниз</span>
+    </div>
+  </section>
+
+  <!-- ===== Обо мне ===== -->
+  <section class="section" id="about">
+    <div class="section__head reveal" data-reveal>
+      <p class="section__kicker">01 — Обо мне</p>
+      <h2 class="section__title">Кто я такой</h2>
+    </div>
+
+    <div class="about">
+      <div class="about__card tilt reveal" data-reveal>
+        <div class="about__card-inner">
+          <div class="about__avatar">АБ</div>
+          <h3>Бунин Андрей</h3>
+          <p class="muted">Студент 1 курса</p>
+          <ul class="about__meta">
+            <li><span>Колледж</span><b>СКОиПТ</b></li>
+            <li><span>Курс</span><b>1 курс</b></li>
+            <li><span>Направление</span><b>Разработка и управление программным обеспечением</b></li>
+            <li><span>Город</span><b>Салават</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="about__text reveal" data-reveal>
+        <p>
+          Я — начинающий разработчик и студент первого курса колледжа <strong>СКОиПТ</strong>.
+          Мне нравится превращать идеи в работающие вещи: разбираться в коде, автоматизировать
+          рутину и создавать ботов, которыми реально пользуются люди.
+        </p>
+        <p>
+          Сейчас я активно изучаю <strong>Python</strong> и работу с API, а параллельно веду
+          <strong>веб-приложение «Планировщик учебного дня»</strong>. Это приложение собирает
+          весь учебный день в одном месте: расписание пар, дедлайны, задачи и напоминания,
+          чтобы ничего не забывалось и не терялось в куче чатов и заметок.
+        </p>
+        <p>
+          Эта страница — моё портфолио. Здесь я собираю свои проекты, чтобы показывать их
+          учителям, друзьям и будущим работодателям.
+        </p>
+
+        <div class="about__facts">
+          <div class="fact">
+            <span class="fact__icon">🎯</span>
+            <div>
+              <b>Цель</b>
+              <p>Стать уверенным разработчиком и собрать сильное портфолио уже на 1 курсе.</p>
+            </div>
+          </div>
+          <div class="fact">
+            <span class="fact__icon">🚀</span>
+            <div>
+              <b>Что делаю</b>
+              <p>Разрабатываю веб-приложение «Планировщик учебного дня», пишу ботов на Python и изучаю работу с API.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Навыки ===== -->
+  <section class="section" id="skills">
+    <div class="section__head reveal" data-reveal>
+      <p class="section__kicker">02 — Навыки</p>
+      <h2 class="section__title">Что я умею</h2>
+      <p class="section__lead">Навыки, которые я развиваю сейчас — прогресс будет расти вместе со мной.</p>
+    </div>
+
+    <div class="skills">
+      <article class="skill-card tilt reveal" data-reveal>
+        <div class="skill-card__icon">🐍</div>
+        <h3>Python</h3>
+        <p>Основы языка, работа с библиотеками, написание ботов.</p>
+        <div class="bar"><i style="--val: 65%"></i></div>
+        <span class="bar__label">65%</span>
+      </article>
+
+      <article class="skill-card tilt reveal" data-reveal>
+        <div class="skill-card__icon">🔌</div>
+        <h3>Работа с API</h3>
+        <p>Запросы к внешним сервисам, интеграции, авторизация.</p>
+        <div class="bar"><i style="--val: 55%"></i></div>
+        <span class="bar__label">55%</span>
+      </article>
+
+      <article class="skill-card tilt reveal" data-reveal>
+        <div class="skill-card__icon">🌐</div>
+        <h3>HTML / CSS</h3>
+        <p>Вёрстка страниц, адаптивность, анимации — основа «Планировщика учебного дня».</p>
+        <div class="bar"><i style="--val: 70%"></i></div>
+        <span class="bar__label">70%</span>
+      </article>
+
+      <article class="skill-card tilt reveal" data-reveal>
+        <div class="skill-card__icon">⚙️</div>
+        <h3>JavaScript</h3>
+        <p>События, DOM, работа с LocalStorage — логика главного проекта.</p>
+        <div class="bar"><i style="--val: 50%"></i></div>
+        <span class="bar__label">50%</span>
+      </article>
+
+      <article class="skill-card tilt reveal" data-reveal>
+        <div class="skill-card__icon">🗄️</div>
+        <h3>Базы данных</h3>
+        <p>SQLite и хранение данных для ботов и проектов.</p>
+        <div class="bar"><i style="--val: 35%"></i></div>
+        <span class="bar__label">35%</span>
+      </article>
+
+      <article class="skill-card tilt reveal" data-reveal>
+        <div class="skill-card__icon">🧰</div>
+        <h3>Git</h3>
+        <p>Версионирование кода, базовые команды, GitHub.</p>
+        <div class="bar"><i style="--val: 45%"></i></div>
+        <span class="bar__label">45%</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Проекты ===== -->
+  <section class="section" id="projects">
+    <div class="section__head reveal" data-reveal>
+      <p class="section__kicker">03 — Проекты</p>
+      <h2 class="section__title">Мои работы</h2>
+      <p class="section__lead">
+        Здесь я храню свои проекты. Главный из них — веб-приложение «Планировщик учебного дня».
+      </p>
+    </div>
+
+    <div class="projects" id="projectsGrid"><!-- карточки рендерятся из js/projects.js --></div>
+
+    <div class="projects__toolbar reveal" data-reveal>
+      <button class="btn btn--primary" id="openProjectForm">
+        <span>＋ Добавить проект</span>
+      </button>
+      <p class="projects__hint">
+        Добавленные через форму проекты сохраняются в браузере.
+        Чтобы закрепить проект навсегда — отредактируй <code>js/projects.js</code>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Контакты ===== -->
+  <section class="section section--contact" id="contact">
+    <div class="contact reveal" data-reveal>
+      <p class="section__kicker">04 — Контакты</p>
+      <h2 class="section__title">Давай на связь</h2>
+      <p class="contact__lead">
+        Открыт для общения, вопросов по проектам и предложений о сотрудничестве.
+        Пиши — я отвечу.
+      </p>
+
+      <div class="contact__links">
+        <a class="contact__link tilt" href="https://vk.com/id200005932324" target="_blank" rel="noopener">
+          <span class="contact__icon">🔵</span>
+          <span class="contact__label">VK</span>
+          <span class="contact__value">vk.com/id200005932324</span>
+        </a>
+        <a class="contact__link tilt" href="https://t.me/ANDREI_BYNUN" target="_blank" rel="noopener">
+          <span class="contact__icon">✈️</span>
+          <span class="contact__label">Telegram</span>
+          <span class="contact__value">@ANDREI_BYNUN</span>
+        </a>
+        <a class="contact__link tilt" href="mailto:fikysford@gmail.com">
+          <span class="contact__icon">✉️</span>
+          <span class="contact__label">E-mail</span>
+          <span class="contact__value">fikysford@gmail.com</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© <span id="year"></span> Андрей Бунин · Портфолио студента СКОиПТ</p>
+  <p class="footer__small">Сделано с 💜 и большим желанием учиться</p>
+</footer>
+
+<!-- ===== Модалка: подробнее о проекте ===== -->
+<div class="modal" id="projectModal" aria-hidden="true">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__window" role="dialog" aria-modal="true">
+    <button class="modal__close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal__content" id="modalContent"></div>
+  </div>
+</div>
+
+<!-- ===== Модалка: форма добавления проекта ===== -->
+<div class="modal" id="formModal" aria-hidden="true">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__window" role="dialog" aria-modal="true">
+    <button class="modal__close" data-close aria-label="Закрыть">✕</button>
+    <div class="modal__content">
+      <h3 class="modal__title">Новый проект</h3>
+      <p class="modal__sub">Заполни карточку — она появится в разделе «Мои работы».</p>
+
+      <form id="projectForm" class="form" autocomplete="off">
+        <label class="form__field">
+          <span>Название проекта *</span>
+          <input type="text" name="title" required maxlength="60" placeholder="Например: Бот для расписания">
+        </label>
+
+        <label class="form__field">
+          <span>Короткое описание *</span>
+          <textarea name="description" required maxlength="220" rows="3" placeholder="Что делает проект и чем полезен"></textarea>
+        </label>
+
+        <div class="form__row">
+          <label class="form__field">
+            <span>Статус</span>
+            <select name="status">
+              <option value="В разработке">В разработке</option>
+              <option value="Готов">Готов</option>
+              <option value="Идея">Идея</option>
+            </select>
+          </label>
+
+          <label class="form__field">
+            <span>Иконка (эмодзи)</span>
+            <input type="text" name="icon" maxlength="4" placeholder="🤖">
+          </label>
+        </div>
+
+        <label class="form__field">
+          <span>Технологии (через запятую)</span>
+          <input type="text" name="tech" placeholder="Python, JavaScript, SQLite">
+        </label>
+
+        <label class="form__field">
+          <span>Ссылка на проект (необязательно)</span>
+          <input type="url" name="link" placeholder="https://github.com/...">
+        </label>
+
+        <div class="form__actions">
+          <button type="submit" class="btn btn--primary"><span>Сохранить</span></button>
+          <button type="reset" class="btn btn--ghost"><span>Очистить</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="js/projects.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
